@@ -30,10 +30,8 @@ public class CeaserCipher {
                 if (c > 'z')
                     c = c - 26;
             }
-
             encrypted += (char) c;
         }
-
         return encrypted;
     }
 
