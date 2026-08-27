@@ -1,22 +1,26 @@
-import java.util.Scanner;
-public class SubstitutionCipher {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String a = "abcdefghijklmnopqrstuvwxyz";
-        String b = "zyxwvutsrqponmlkjihgfedcba";
-        System.out.print("Enter text: ");
-        String text = sc.nextLine().toLowerCase();
-        String enc = "", dec = "";
-        for (char c : text.toCharArray()) {
-            int i = a.indexOf(c);
-            enc += (i != -1) ? b.charAt(i) : c;
-        }
-        for (char c : enc.toCharArray()) {
-            int i = b.indexOf(c);
-            dec += (i != -1) ? a.charAt(i) : c;
-        }
-        System.out.println("Encrypted Text : " + enc);
-        System.out.println("Decrypted Text : " + dec);
-        sc.close();
+package com.islab;
+import java.util.*;
+public class SubstitutionCipher{
+    static Scanner sc=new Scanner(System.in);
+    static String a="abcdefghijklmnopqrstuvwxyz";
+    static String b="zyxwvutsrqponmlkjihgfedcba";
+    static String encrypt(String str){
+        String r="";
+        for(char c:str.toCharArray())
+            r+=b.charAt(a.indexOf(c));
+        return r;
+    }
+    static String decrypt(String str){
+        String r="";
+        for (char c:str.toCharArray())
+            r+=b.charAt(a.indexOf(c));
+        return r;
+    }
+    public static void main(String[] args){
+        System.out.print("Enter any string: ");
+        String str=sc.nextLine();
+        String enc=encrypt(str);
+        System.out.println("The encrypted data is: " + enc);
+        System.out.println("The decrypted data is: " + decrypt(enc));
     }
 }
