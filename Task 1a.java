@@ -1,55 +1,25 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Scanner;
-
-public class CeaserCipher {
-    static Scanner sc = new Scanner(System.in);
-    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    public static void main(String[] args) throws IOException {
-        System.out.print("Enter any String: ");
-        String str = br.readLine();
-        System.out.print("Enter the Key: ");
-        int key = sc.nextInt();
-        String encrypted = encrypt(str, key);
-        System.out.println("\nEncrypted String is: " + encrypted);
-        String decrypted = decrypt(encrypted, key);
-        System.out.println("Decrypted String is: " + decrypted);
-    }
-
-    public static String encrypt(String str, int key) {
-        String encrypted = "";
-        for (int i = 0; i < str.length(); i++) {
-            int c = str.charAt(i);
-            if (Character.isUpperCase(c)) {
-                c = c + (key % 26);
-                if (c > 'Z')
-                    c = c - 26;
-            } else if (Character.isLowerCase(c)) {
-                c = c + (key % 26);
-                if (c > 'z')
-                    c = c - 26;
-            }
-            encrypted += (char) c;
+import java.util.*;
+public class Task1a{
+    static Scanner s=new Scanner(System.in);
+    static String encrypt(String str,int key){
+        StringBuilder r=new StringBuilder();
+        for(char c:str.toCharArray()){
+            if(Character.isUpperCase(c))
+                c=(char)((c-'A'+key)%26+'A');
+            else if(Character.isLowerCase(c))
+                c=(char)((c-'a'+key)%26+'a');
+            r.append(c);
         }
-        return encrypted;
+        return r.toString();
     }
-
-    public static String decrypt(String str, int key) {
-        String decrypted = "";
-        for (int i = 0; i < str.length(); i++) {
-            int c = str.charAt(i);
-            if (Character.isUpperCase(c)) {
-                c = c - (key % 26);
-                if (c < 'A')
-                    c = c + 26;
-            } else if (Character.isLowerCase(c)) {
-                c = c - (key % 26);
-                if (c < 'a')
-                    c = c + 26;
-            }
-            decrypted += (char) c;
-        }
-        return decrypted;
+    static String decrypt(String str,int key){
+        return encrypt(str,26-key%26);
+    }
+    public static void main(String[] args){
+        String str=s.nextLine();
+        int key=s.nextInt();
+        String enc=encrypt(str,key);
+        System.out.println("Encryption: " + enc);
+        System.out.println("Decryption: " + decrypt(enc,key));
     }
 }
