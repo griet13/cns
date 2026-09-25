@@ -5,7 +5,7 @@ public class Task2{
     static Cipher cipher;
     static byte[] encrypt(String data) throws Exception{
         byte[] encrypted=cipher.doFinal(data.getBytes());
-        System.out.println("Encrypted: " + Arrays.toString(encrypted));
+        System.out.println("Encrypted: " + encrypted);
         return encrypted;
     }
     static void decrypt(byte[] data) throws Exception{
