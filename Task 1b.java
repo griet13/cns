@@ -1,6 +1,6 @@
 package com.islab;
 import java.util.*;
-public class SubstitutionCipher{
+public class Task1b{
     static Scanner sc=new Scanner(System.in);
     static String a="abcdefghijklmnopqrstuvwxyz";
     static String b="zyxwvutsrqponmlkjihgfedcba";
