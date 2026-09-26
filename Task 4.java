@@ -1,29 +1,30 @@
 import java.util.*;
 import javax.crypto.*;
 public class Task4{
-    static Scanner s=new Scanner(System.in);
-    private static Cipher cipher;
+    static Scanner sc = new Scanner(System.in);
+    static Cipher cipher;
     private static byte[] encrypt(String data) throws Exception{
-        byte[] encrypted=cipher.doFinal(data.getBytes());
-        System.out.println(encrypted);
+        byte[] encrypted = cipher.doFinal(data.getBytes());
+        System.out.println("Encrypted: " + encrypted);
         return encrypted;
     }
     private static byte[] decrypt(byte[] data) throws Exception{
-        byte[] decrypted=cipher.doFinal(data);
-        System.out.println(new String(decrypted));
+        byte[] decrypted = cipher.doFinal(data);
+        System.out.println("Decrypted: " + new String(decrypted));
         return decrypted;
     }
     public static void main(String[] args){
         try{
-            String data=s.nextLine();
-            KeyGenerator keygen=KeyGenerator.getInstance("AES");
-            SecretKey key=keygen.generateKey();
-            cipher=Cipher.getInstance("AES");
+            String data = sc.nextLine();
+            KeyGenerator kg = KeyGenerator.getInstance("AES");
+            SecretKey key = kg.generateKey();
+            cipher = Cipher.getInstance("AES");
             cipher.init(Cipher.ENCRYPT_MODE,key);
-            byte[] encrypted=encrypt(data);
+            byte[] encrypted = encrypt(data);
             cipher.init(Cipher.DECRYPT_MODE,key);
             decrypt(encrypted);
-        } catch(Exception e){
+        }
+        catch(Exception e){
             e.printStackTrace();
         }
     }
