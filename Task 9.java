@@ -1,4 +1,3 @@
-package com.islab;
 import java.security.*;
 public class SHA1{
     public static void main(String[] a){
