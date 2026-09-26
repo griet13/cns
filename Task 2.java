@@ -1,6 +1,6 @@
 import java.util.*;
 import javax.crypto.*;
-public class Main{
+public class Task2{
     static Scanner sc = new Scanner(System.in);
     static Cipher cipher;
     static byte[] encrypt(String data) throws Exception{
