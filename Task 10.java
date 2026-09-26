@@ -1,20 +1,25 @@
 import java.security.*;
-import java.util.*;
-public class Task10{
-    static Scanner s=new Scanner(System.in);
-    public static void main(String[] args){
+public class MD5{
+    public static void main(String[] a){
         try{
-            System.out.print("Enter input data: ");
-            String data=s.nextLine();
             MessageDigest md=MessageDigest.getInstance("MD5");
             System.out.println("Message digest object info:");
             System.out.println("Algorithm = " + md.getAlgorithm());
             System.out.println("ToString = " + md);
-            md.update(data.getBytes());
-            System.out.println("MD5(\"" + data + "\") = " +
-                    HexFormat.of().formatHex(md.digest()));
+            String[] inputs={"","abc","abcdefghijklmnopqrstuvwxyz"};
+            for(String input:inputs){
+                byte[] output=md.digest(input.getBytes());
+                System.out.println("MD5(\"" + input + "\") = " +
+                    bytesToHex(output));
+            }
         } catch(Exception e){
-            e.printStackTrace();
+            System.out.println("Exception: " + e);
         }
+    }
+    static String bytesToHex(byte[] b){
+        String r="";
+        for(byte x:b)
+            r+=String.format("%02X",x);
+        return r;
     }
 }
