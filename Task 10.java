@@ -9,8 +9,7 @@ public class MD5{
             String[] inputs={"","abc","abcdefghijklmnopqrstuvwxyz"};
             for(String input:inputs){
                 byte[] output=md.digest(input.getBytes());
-                System.out.println("MD5(\"" + input + "\") = " +
-                    bytesToHex(output));
+                System.out.println("\nMD5(\"" + input + "\") = " + bytesToHex(output));
             }
         } catch(Exception e){
             System.out.println("Exception: " + e);
